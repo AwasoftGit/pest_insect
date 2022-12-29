@@ -1,8 +1,8 @@
-# 69번 지능형 곤충 스마트팜(누에, 쌍별귀뚜라미) 데이터 모델편
+# 15번 디지털 트랩 포집 해충 데이터
 
 ---
 ## 모델
-### 1. AI 곤충 영상 분석모델
+### 1. 해충 탐지 분류 모델
 - 모델 명: Detectron2
 - 모델 버전: 0.6v
 
@@ -20,15 +20,15 @@ Waleed Abdulla
     <img src="image/img_1.png">
    - 출처: Automated segmentation of martensite-austenite islands in bainitic steel - Deniz İren
 #### Parameters
-| 모델 파라미터 | 값     | 비고         |
-|---------|-------|------------|
-| COCO-InstanceSegmentation/mask_rcnn_R_101_FPN_3x  | -     | 학습 구조 및 모델 |
-| DATALOADER.NUM_WORKERS    | 2     | 사용할 코어 수   |
-| SOLVER.IMS_PER_BATCH    | 2     | 배치 사이즈     |
-| SOLVER.BASE_LR    | 0.001 | 학습률        |
-| SOLVER.MAX_ITER   | 8000  | 학습량        |
-| MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE    | 128   | 미니배치 사이즈   |
-| MODEL.ROI_HEADS.NUM_CLASSES   | 4     | 클래스 개수     |
+| 모델 파라미터 | 값     | 비고            |
+|---------|-------|---------------|
+| COCO-InstanceSegmentation/mask_rcnn_R_101_FPN_3x  | -     | 학습 구조 및 모델    |
+| DATALOADER.NUM_WORKERS    | 2     | 사용할 코어 수      |
+| SOLVER.IMS_PER_BATCH    | 8     | 배치 사이즈        |
+| SOLVER.BASE_LR    | 0.001 | 학습률           |
+| SOLVER.MAX_ITER   | 14000 | 학습량(클래스*2000) |
+| MODEL.ROI_HEADS.BATCH_SIZE_PER_IMAGE    | 128   | 미니배치 사이즈      |
+| MODEL.ROI_HEADS.NUM_CLASSES   | 7     | 클래스 개수        |
 
 
 #### Input
@@ -39,8 +39,8 @@ Waleed Abdulla
 
 #### Evaluation
     - 목표 mAP 80% 이상
-    - 결과 84.561
-<img src="image/img_7.png">
+    - 결과 
+<img src="해충이미지.png">
 
 ### 2. AI 곤충 생육 환경 분석모델
 - 모델 명: Randomforest
@@ -76,25 +76,22 @@ Waleed Abdulla
 ### Training Dataset
     
     - 센서 값
-      - 온도, 습도, CO2농도, 표면습도, 조도, 암모니아 농도, 실내산소, 외부풍속 등)
-    - 곤충 길이 값 (단위:mm)
-<img src="image/img_3.png">
+      - 온도, 습도
+<img src="image/randomforest2.png">
     
 
 
 #### Input
-    - 생육환경데이터(2차원배열) : [[x1, x2, x3,...], [x1, x2, x3,...],...]
-    - 곤충길이데이터(1차원배열) : [y1, y2, y3...]
+    - 생육환경데이터(2차원배열) : [[x1, x2], [x1, x2],...]
+    - 해충유무데이터(1차원배열) : [y1, y2, y3...]
 
 #### Output
-    - 생육환경에 대한 곤충길이 : 34
+    - 해충 유무 예측
 
 ### Evaluation
-
-
     - 목표 mae 10 이하
-    - 결과 0.59966...
-<img src="image/img_4.png">
+    - 결과 
+<img src="image/randomforest.png">
 
 
 ---
