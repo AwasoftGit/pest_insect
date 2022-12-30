@@ -40,7 +40,7 @@ Waleed Abdulla
 #### Evaluation
     - 목표 mAP 80% 이상
     - 결과 
-<img src="해충이미지.png">
+<img src="image/img_7.png">
 
 ### 2. AI 곤충 생육 환경 분석모델
 - 모델 명: Randomforest
@@ -78,6 +78,9 @@ Waleed Abdulla
     - 센서 값
       - 온도, 습도
 <img src="image/randomforest2.png">
+
+---
+<img src="image/randomforest3.png">
     
 
 
@@ -90,7 +93,7 @@ Waleed Abdulla
 
 ### Evaluation
     - 목표 mae 10 이하
-    - 결과 
+    - 결과 0.1006....
 <img src="image/randomforest.png">
 
 
