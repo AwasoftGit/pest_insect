@@ -94,7 +94,7 @@ Waleed Abdulla
 ### Evaluation
     - 목표 mae 10 이하
     - 결과 0.1006....
-<img src="image/randomforest.png">
+<img src="image/img_4.png">
 
 
 ---
